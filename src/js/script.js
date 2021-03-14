@@ -43,9 +43,15 @@
         book.addEventListener('dblclick', function (event) {
           event.preventDefault();
           const clickedElement = this;
-          clickedElement.classList.add('favorite');
-          const bookClicked = clickedElement.getAttribute('data-id');
-          favoriteBooks.push(bookClicked);
+
+          if (!clickedElement.classList.contains('favorite') == true) {
+            clickedElement.classList.add('favorite');
+            const bookClicked = clickedElement.getAttribute('data-id');
+            favoriteBooks.push(bookClicked);
+          } else {
+            clickedElement.classList.remove('favorite');
+            favoriteBooks.splice(favoriteBooks.indexOf('bookClicked'));
+          }
         });
       }
     }
