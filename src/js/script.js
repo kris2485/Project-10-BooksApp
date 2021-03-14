@@ -32,19 +32,19 @@
     getElements() {
       const thisBookList = this;
       thisBookList.book = document.querySelector(select.containerOf.bookList);
-      thisBookList.bookListElem = document.querySelectorAll(select.containerOf.bookElements);
-
-      const favoriteBooks = [];
+      console.log(thisBookList.book);
     }
     initActions() {
       const thisBookList = this;
+      const favoriteBooks = [];
+      thisBookList.bookListElem = document.querySelectorAll(select.containerOf.bookElements);
+      console.log(thisBookList.bookListElem);
       for (let book of thisBookList.bookListElem) {
-        book.addEventListner('dblclick', function (event) {
+        book.addEventListener('dblclick', function (event) {
           event.preventDefault();
-          const clickedElement = book.classList.add('favorite');
-          console.log(clickedElement);
-          const bookClicked = clickedElement.getAtribute('data-id');
-          console.log(bookClicked);
+          const clickedElement = this;
+          clickedElement.classList.add('favorite');
+          const bookClicked = clickedElement.getAttribute('data-id');
           favoriteBooks.push(bookClicked);
         });
       }
