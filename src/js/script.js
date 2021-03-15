@@ -20,6 +20,8 @@
       const thisBookList = this;
       thisBookList.getElements();
       thisBookList.render();
+      thisBookList.determineRatingBgc();
+      thisBookList.determineWidth();
       thisBookList.initActions();
     }
 
@@ -27,6 +29,8 @@
       const thisBookList = this;
       thisBookList.data = dataSource.books;
       for (let book of thisBookList.data) {
+        book.ratingBgc = thisBookList.determineRatingBgc(book.rating);
+        book.ratingWidth = thisBookList.determineWidth(book.rating);
         const generatedHTML = templates.templateBook(book);
         const generatedDOM = utils.createDOMFromHTML(generatedHTML);
         thisBookList.book.appendChild(generatedDOM);
@@ -97,6 +101,44 @@
           uncover.classList.remove('hidden');
         }
       }
+    }
+    determineRatingBgc(rating) {
+      let background = '';
+      if (rating < 0) {
+        background: 'linear-gradient(to bottom, #fefcea 0%, #f1da36 100%)';
+      } else if (rating > 6 && rating <= 8) {
+        background: 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
+      } else if (rating > 8 && rating <= 9) {
+        background: 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
+      } else if (rating > 9) {
+        background: 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
+      }
+      return background;
+    }
+    determineWidth(rating) {
+      let width = 0;
+      if (rating >= 1) {
+        width = 10;
+      } else if (rating >= 2) {
+        width = 20;
+      } else if (rating >= 3) {
+        width = 30;
+      } else if (rating >= 4) {
+        width = 40;
+      } else if (rating >= 5) {
+        width = 50;
+      } else if (rating >= 6) {
+        width = 60;
+      } else if (rating >= 7) {
+        width = 70;
+      } else if (rating >= 8) {
+        width = 80;
+      } else if (rating >= 9) {
+        width = 90;
+      } else if (rating >= 10) {
+        width = 10;
+      }
+      return width;
     }
   }
   const app = {
