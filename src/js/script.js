@@ -117,23 +117,23 @@
     }
     determineWidth(rating) {
       let width = 0;
-      if (rating >= 1) {
+      if (rating >= 1 && rating < 2) {
         width = 10;
-      } else if (rating >= 2) {
+      } else if (rating >= 2 && rating < 3) {
         width = 20;
-      } else if (rating >= 3) {
+      } else if (rating >= 3 && rating < 4) {
         width = 30;
-      } else if (rating >= 4) {
+      } else if (rating >= 4 && rating < 5) {
         width = 40;
-      } else if (rating >= 5) {
+      } else if (rating >= 5 && rating < 6) {
         width = 50;
-      } else if (rating >= 6) {
+      } else if (rating >= 6 && rating < 7) {
         width = 60;
-      } else if (rating >= 7) {
+      } else if (rating >= 7 && rating < 8) {
         width = 70;
-      } else if (rating >= 8) {
+      } else if (rating >= 8 && rating < 9) {
         width = 80;
-      } else if (rating >= 9) {
+      } else if (rating >= 9 && rating < 10) {
         width = 90;
       } else if (rating >= 10) {
         width = 100;
